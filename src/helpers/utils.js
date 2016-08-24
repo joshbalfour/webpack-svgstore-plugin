@@ -269,9 +269,9 @@ var _parseFiles = function(files, options) {
  * @param  {[type]} name   [description]
  * @return {[type]}        [description]
  */
-var _hash = function(str, hash) {
+var _hash = function(str, buffer) {
   return str.indexOf('[hash]') >= 0
-    ? str.replace('[hash]', hash)
+    ? str.replace('[hash]', crypto.createHash('md5').update(buffer).digest('hex'))
     : str;
 };
 
